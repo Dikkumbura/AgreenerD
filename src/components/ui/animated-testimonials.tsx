@@ -124,7 +124,7 @@ export function AnimatedTestimonials({
           </motion.div>
 
           {/* Right side: Testimonial cards */}
-          <motion.div variants={itemVariants} className="relative h-full mr-10 min-h-[300px] md:min-h-[400px]">
+          <motion.div variants={itemVariants} className="relative h-full mr-0 md:mr-10 min-h-[400px] md:min-h-[400px]">
             {testimonials.map((testimonial, index) => (
               <motion.div
                 key={testimonial.id}
@@ -138,30 +138,30 @@ export function AnimatedTestimonials({
                 transition={{ duration: 0.5, ease: "easeInOut" }}
                 style={{ zIndex: activeIndex === index ? 10 : 0 }}
               >
-                <div className="bg-white border shadow-lg rounded-xl p-8 h-full flex flex-col">
-                  <div className="mb-6 flex gap-2">
+                <div className="bg-white border shadow-lg rounded-xl p-4 md:p-8 h-full flex flex-col">
+                  <div className="mb-4 md:mb-6 flex gap-2">
                     {Array(testimonial.rating)
                       .fill(0)
                       .map((_, i) => (
-                        <Star key={i} className="h-5 w-5 fill-brand-lime text-brand-lime" />
+                        <Star key={i} className="h-4 w-4 md:h-5 md:w-5 fill-brand-lime text-brand-lime" />
                       ))}
                   </div>
 
-                  <div className="relative mb-6 flex-1">
-                    <Quote className="absolute -top-2 -left-2 h-8 w-8 text-brand-lime/20 rotate-180" />
-                    <p className="relative z-10 text-lg font-medium leading-relaxed text-gray-700">"{testimonial.content}"</p>
+                  <div className="relative mb-4 md:mb-6 flex-1">
+                    <Quote className="absolute -top-2 -left-2 h-6 w-6 md:h-8 md:w-8 text-brand-lime/20 rotate-180" />
+                    <p className="relative z-10 text-base md:text-lg font-medium leading-relaxed text-gray-700">"{testimonial.content}"</p>
                   </div>
 
-                  <Separator className="my-4" />
+                  <Separator className="my-3 md:my-4" />
 
-                  <div className="flex items-center gap-4">
-                    <Avatar className="h-12 w-12 border">
+                  <div className="flex items-center gap-3 md:gap-4">
+                    <Avatar className="h-10 w-10 md:h-12 md:w-12 border">
                       <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
                       <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
                     </Avatar>
                     <div>
-                      <h3 className="font-semibold text-brand-navy">{testimonial.name}</h3>
-                      <p className="text-sm text-gray-600">{testimonial.role}</p>
+                      <h3 className="font-semibold text-brand-navy text-sm md:text-base">{testimonial.name}</h3>
+                      <p className="text-xs md:text-sm text-gray-600">{testimonial.role}</p>
                     </div>
                   </div>
                 </div>
@@ -169,8 +169,8 @@ export function AnimatedTestimonials({
             ))}
 
             {/* Decorative elements */}
-            <div className="absolute -bottom-6 -left-6 h-24 w-24 rounded-xl bg-brand-lime/5"></div>
-            <div className="absolute -top-6 -right-6 h-24 w-24 rounded-xl bg-brand-lime/5"></div>
+            <div className="absolute -bottom-6 -left-6 h-16 w-16 md:h-24 md:w-24 rounded-xl bg-brand-lime/5"></div>
+            <div className="absolute -top-6 -right-6 h-16 w-16 md:h-24 md:w-24 rounded-xl bg-brand-lime/5"></div>
           </motion.div>
         </motion.div>
       </div>

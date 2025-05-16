@@ -1,92 +1,64 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 
 const Header: React.FC = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 10);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header 
-      className={`fixed top-0 w-full z-50 transition-all duration-300 bg-white ${
-        isScrolled ? 'shadow-md py-2' : 'py-4'
-      }`}
-    >
+    <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-200">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center">
-          <div className="flex items-center">
-            <img 
-              src="/images/logo.webp" 
-              alt="A Greener Cleaner Logo" 
-              className={`h-auto ${isScrolled ? 'w-14' : 'w-16'} my-auto`}
-            />
+        <div className="flex items-center justify-between h-16">
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <img src="/images/logo.webp" alt="A Greener Cleaner Logo" className="h-12" />
           </div>
-          
+
           {/* Desktop Navigation */}
-          <div className="hidden md:flex flex-1 justify-between items-center">
-            <div className="flex-1"></div> {/* Spacer */}
-            <nav className="flex flex-[3] justify-center">
-              <div className="flex justify-between items-center w-full">
-                {['About', 'Services', 'How It Works', 'Sustainability', 'Contact'].map((item) => (
-                  <a 
-                    key={item}
-                    href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
-                    className={`${isScrolled ? 'text-base' : 'text-lg'} font-medium text-brand-navy/80 hover:text-brand-navy transition-colors py-2`}
-                  >
-                    {item}
-                  </a>
-                ))}
-              </div>
-            </nav>
-            <div className="flex-1 flex justify-end">
-              <button 
-                className="bg-brand-lime hover:bg-brand-green text-white font-medium py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg active:scale-95 active:shadow-inner"
-              >
-                Schedule Pickup
-              </button>
-            </div>
-          </div>
-          
+          <nav className="hidden md:flex items-center space-x-8">
+            <a href="#how-it-works" className="text-gray-600 hover:text-brand-navy">How It Works</a>
+            <a href="#sustainability" className="text-gray-600 hover:text-brand-navy">Sustainability</a>
+            <a href="#testimonials" className="text-gray-600 hover:text-brand-navy">Reviews</a>
+            <button className="bg-brand-lime hover:bg-brand-lime/90 text-white px-4 py-2 rounded-full">
+              Schedule Pickup
+            </button>
+          </nav>
+
           {/* Mobile Menu Button */}
-          <button 
-            className="md:hidden ml-auto"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="md:hidden p-2 rounded-lg hover:bg-gray-100"
           >
-            {mobileMenuOpen ? (
-              <X className="h-6 w-6 text-brand-navy" />
-            ) : (
-              <Menu className="h-6 w-6 text-brand-navy" />
-            )}
+            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>
         </div>
       </div>
-      
-      {/* Mobile Menu */}
-      {mobileMenuOpen && (
-        <div className="md:hidden bg-white">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {['About', 'Services', 'How It Works', 'Sustainability', 'Contact'].map((item) => (
-              <a
-                key={item}
-                href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
-                className="block px-3 py-2 text-base font-medium text-brand-navy hover:text-brand-lime transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {item}
-              </a>
-            ))}
-            <button 
-              className="w-full mt-3 bg-brand-lime hover:bg-brand-green text-white font-medium py-2 px-6 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg active:scale-95 active:shadow-inner"
-              onClick={() => setMobileMenuOpen(false)}
+
+      {/* Mobile Navigation */}
+      {isMenuOpen && (
+        <div className="md:hidden bg-white border-t border-gray-200">
+          <div className="container mx-auto px-4 py-4 space-y-4">
+            <a
+              href="#how-it-works"
+              className="block text-gray-600 hover:text-brand-navy"
+              onClick={() => setIsMenuOpen(false)}
             >
+              How It Works
+            </a>
+            <a
+              href="#sustainability"
+              className="block text-gray-600 hover:text-brand-navy"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Sustainability
+            </a>
+            <a
+              href="#testimonials"
+              className="block text-gray-600 hover:text-brand-navy"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Reviews
+            </a>
+            <button className="w-full bg-brand-lime hover:bg-brand-lime/90 text-white px-4 py-2 rounded-full">
               Schedule Pickup
             </button>
           </div>
