@@ -11,10 +11,10 @@ const ProblemSolution: React.FC = () => {
             <img
               src="/images/Simply-Laundry-Perc-1- upscaled.png"
               alt="Traditional dry cleaning chemicals"
-              className="rounded-lg shadow-lg w-full"
+              className="rounded-lg shadow-lg w-full max-w-[85%] sm:max-w-full mx-auto"
             />
-            <div className="absolute -bottom-4 -right-4 bg-brand-yellow rounded-lg p-4 shadow-lg">
-              <AlertTriangle className="h-8 w-8 text-brand-navy" />
+            <div className="absolute -bottom-4 -right-4 bg-brand-yellow rounded-lg p-3 sm:p-4 shadow-lg">
+              <AlertTriangle className="h-6 w-6 sm:h-8 sm:w-8 text-brand-navy" />
             </div>
           </div>
 
