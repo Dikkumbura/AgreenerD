@@ -138,29 +138,30 @@ export function AnimatedTestimonials({
                 transition={{ duration: 0.5, ease: "easeInOut" }}
                 style={{ zIndex: activeIndex === index ? 10 : 0 }}
               >
-                <div className="bg-white border shadow-lg rounded-xl p-4 pb-6 md:p-8 h-full flex flex-col">
+                <div className="bg-white border shadow-lg rounded-xl p-4 md:p-8 h-full flex flex-col justify-between">
                   <div className="mb-4 md:mb-6 flex gap-2">
                     {Array(testimonial.rating)
                       .fill(0)
                       .map((_, i) => (
-                        <Star key={i} className="h-4 w-4 md:h-5 md:w-5 fill-brand-lime text-brand-lime" />
+                        <Star key={i} className="h-3.5 w-3.5 md:h-5 md:w-5 fill-brand-lime text-brand-lime" />
                       ))}
                   </div>
 
-                  <div className="relative mb-4 md:mb-6 flex-1">
-                    <p className="relative z-10 text-base md:text-lg font-medium leading-relaxed text-gray-700">"{testimonial.content}"</p>
+                  <div className="relative flex-1 mb-4">
+                    <p className={`relative z-10 font-medium leading-relaxed text-gray-700 ${testimonial.content.length > 200 ? 'text-sm md:text-base' : 'text-base md:text-lg'}`}>"{testimonial.content}"</p>
                   </div>
 
-                  <Separator className="my-3 md:my-4" />
-
-                  <div className="flex items-center gap-3 md:gap-4 pb-2">
-                    <Avatar className="h-10 w-10 md:h-12 md:w-12 border">
-                      <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
-                      <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
-                    </Avatar>
-                    <div>
-                      <h3 className="font-semibold text-brand-navy text-sm md:text-base">{testimonial.name}</h3>
-                      <p className="text-xs md:text-sm text-gray-600">{testimonial.role}</p>
+                  <div className="mt-auto">
+                    <Separator className="mb-4" />
+                    <div className="flex items-center gap-3 mb-3 md:mb-4">
+                      <Avatar className="h-8 w-8 md:h-12 md:w-12 border flex-shrink-0">
+                        <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
+                        <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
+                      </Avatar>
+                      <div className="min-w-0">
+                        <h3 className="font-semibold text-brand-navy text-sm md:text-base truncate">{testimonial.name}</h3>
+                        <p className="text-xs md:text-sm text-gray-600 truncate">{testimonial.role}</p>
+                      </div>
                     </div>
                   </div>
                 </div>
