@@ -148,7 +148,6 @@ export function AnimatedTestimonials({
                   </div>
 
                   <div className="relative mb-4 md:mb-6 flex-1">
-                    <Quote className="absolute -top-2 -left-2 h-6 w-6 md:h-8 md:w-8 text-brand-lime/20 rotate-180" />
                     <p className="relative z-10 text-base md:text-lg font-medium leading-relaxed text-gray-700">"{testimonial.content}"</p>
                   </div>
 
