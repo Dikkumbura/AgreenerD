@@ -4,6 +4,8 @@ import { Menu, X } from 'lucide-react';
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const navItems = ['About', 'Services', 'How It Works', 'Sustainability', 'Contact'];
+
   return (
     <header className="fixed top-0 left-0 right-0 z-50 bg-white/90 backdrop-blur-sm border-b border-gray-200">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
@@ -14,11 +16,17 @@ const Header: React.FC = () => {
           </div>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
-            <a href="#how-it-works" className="text-gray-600 hover:text-brand-navy">How It Works</a>
-            <a href="#sustainability" className="text-gray-600 hover:text-brand-navy">Sustainability</a>
-            <a href="#testimonials" className="text-gray-600 hover:text-brand-navy">Reviews</a>
-            <button className="bg-brand-lime hover:bg-brand-lime/90 text-white px-4 py-2 rounded-full">
+          <nav className="hidden md:flex items-center space-x-6">
+            {navItems.map((item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
+                className="text-brand-navy/80 hover:text-brand-navy transition-colors"
+              >
+                {item}
+              </a>
+            ))}
+            <button className="bg-brand-lime hover:bg-brand-lime/90 text-white px-4 py-2 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg active:scale-95">
               Schedule Pickup
             </button>
           </nav>
@@ -37,28 +45,17 @@ const Header: React.FC = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-200">
           <div className="container mx-auto px-4 py-4 space-y-4">
-            <a
-              href="#how-it-works"
-              className="block text-gray-600 hover:text-brand-navy"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              How It Works
-            </a>
-            <a
-              href="#sustainability"
-              className="block text-gray-600 hover:text-brand-navy"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Sustainability
-            </a>
-            <a
-              href="#testimonials"
-              className="block text-gray-600 hover:text-brand-navy"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Reviews
-            </a>
-            <button className="w-full bg-brand-lime hover:bg-brand-lime/90 text-white px-4 py-2 rounded-full">
+            {navItems.map((item) => (
+              <a
+                key={item}
+                href={`#${item.toLowerCase().replace(/\s+/g, '-')}`}
+                className="block text-brand-navy/80 hover:text-brand-navy transition-colors"
+                onClick={() => setIsMenuOpen(false)}
+              >
+                {item}
+              </a>
+            ))}
+            <button className="w-full bg-brand-lime hover:bg-brand-lime/90 text-white px-4 py-2 rounded-full transition-all duration-300">
               Schedule Pickup
             </button>
           </div>
