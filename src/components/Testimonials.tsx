@@ -5,25 +5,20 @@ const Testimonials: React.FC = () => {
   const testimonials = [
     {
       id: 1,
-      name: "Lisa Thompson",
-      role: "Environmentally Conscious Professional",
-      content: "I was amazed at how fresh and clean my clothes came back without any chemical smell. As someone who's mindful about environmental impact, I love that they use eco-friendly cleaning methods. My suits look impeccable, and I feel good knowing I'm making a sustainable choice.",
+      name: "Christine S.",
+      content: "The best cleaners around! Clothes smell clean with NO chemical smell. Very nice and helpful staff.",
       rating: 5,
-      avatar: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=400&h=400&fit=crop"
     },
     {
       id: 2,
-      name: "David Chen",
-      role: "Local Business Owner",
-      content: "The quality of service is exceptional. My restaurant uniforms and linens come back spotless every time, and knowing they use non-toxic cleaning methods gives me peace of mind for my staff. The free pickup and delivery service is a game-changer for my busy schedule.",
+      name: "Sophia M.",
+      content: "I LOVE this place. Everything about it ranks top-notch. I took in a ecru formal gown that I thought for certain would never come clean again. It had make-up around the neckline. The hemline got dragged through mud. I picked it up and, to my grateful surprise, it looked brand new! And all done with environmentally friendly product. I couldn't ask for more. Thanks!",
       rating: 5,
-      avatar: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=400&h=400&fit=crop"
     },
     {
       id: 3,
-      name: "Rachel Martinez",
-      role: "Healthcare Professional",
-      content: "Working in healthcare, I'm particularly conscious about cleanliness and harmful chemicals. Their eco-friendly approach not only gets my scrubs perfectly clean but also ensures they're free from harsh chemicals. The convenience of their service is unmatched!",
+      name: "Keith M.",
+      content: "The owner is a great guy, their prices are fair and service is top notch. I have been using them for over three years and It's the only place I go.",
       rating: 5,
       avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop"
     }
