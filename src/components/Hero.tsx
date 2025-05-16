@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, Info, Leaf } from 'lucide-react';
+import { Calendar, Info, Leaf, Recycle, Clock, Shield, Truck } from 'lucide-react';
 
 const Hero: React.FC = () => {
   return (
@@ -7,9 +7,10 @@ const Hero: React.FC = () => {
       {/* Background with gradient overlay */}
       <div className="absolute inset-0 bg-gradient-to-br from-brand-navy via-brand-navy/95 to-brand-green/90">
         <div className="absolute inset-0" style={{
-          backgroundImage: `url('https://images.pexels.com/photos/5591581/pexels-photo-5591581.jpeg?auto=compress&cs=tinysrgb&w=1920')`,
+          backgroundImage: `url('/images/dry-cleaning-vs-laundry-1024x683.jpg')`,
           backgroundSize: 'cover',
-          backgroundPosition: 'center',
+          backgroundPosition: 'center bottom',
+          backgroundPositionY: '0%',
           mixBlendMode: 'overlay',
           opacity: 0.4
         }}></div>
@@ -64,14 +65,40 @@ const Hero: React.FC = () => {
             </div>
           </div>
 
-          {/* Right Column - Decorative Element */}
+          {/* Right Column - Service Benefits */}
           <div className="hidden lg:block relative">
-            <div className="absolute inset-0 bg-brand-lime/20 rounded-full blur-3xl"></div>
-            <div className="relative bg-gradient-to-br from-brand-lime/20 to-brand-green/20 rounded-3xl p-8 backdrop-blur-sm border border-white/10">
-              <div className="grid grid-cols-2 gap-4">
-                {[...Array(4)].map((_, index) => (
-                  <div key={index} className="aspect-square rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10 p-4 flex items-center justify-center">
-                    <div className="w-full h-full rounded-xl bg-white/5"></div>
+            <div className="relative bg-white/5 rounded-3xl p-8 backdrop-blur-sm border border-white/10">
+              <div className="grid gap-6">
+                {[
+                  {
+                    icon: <Recycle className="h-8 w-8 text-brand-lime" />,
+                    title: "Eco-Friendly Process",
+                    description: "Our wet cleaning technology uses biodegradable detergents and pure water"
+                  },
+                  {
+                    icon: <Shield className="h-8 w-8 text-brand-lime" />,
+                    title: "Gentle on Fabrics",
+                    description: "Safe for delicate materials while tough on stains and odors"
+                  },
+                  {
+                    icon: <Clock className="h-8 w-8 text-brand-lime" />,
+                    title: "24-Hour Service",
+                    description: "Quick turnaround with same-day service available"
+                  },
+                  {
+                    icon: <Truck className="h-8 w-8 text-brand-lime" />,
+                    title: "Free Pickup & Delivery",
+                    description: "Convenient door-to-door service at no extra cost"
+                  }
+                ].map((benefit, index) => (
+                  <div key={index} className="flex items-start space-x-4 p-4 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">
+                    <div className="flex-shrink-0">
+                      {benefit.icon}
+                    </div>
+                    <div>
+                      <h3 className="text-lg font-semibold text-white mb-1">{benefit.title}</h3>
+                      <p className="text-gray-300 text-sm">{benefit.description}</p>
+                    </div>
                   </div>
                 ))}
               </div>

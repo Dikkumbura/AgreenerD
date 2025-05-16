@@ -9,8 +9,8 @@ const ProblemSolution: React.FC = () => {
           {/* Left Column - Image */}
           <div className="relative">
             <img
-              src="https://images.pexels.com/photos/4439444/pexels-photo-4439444.jpeg"
-              alt="Dry clean only tags on clothing"
+              src="/images/Simply-Laundry-Perc-1- upscaled.png"
+              alt="Traditional dry cleaning chemicals"
               className="rounded-lg shadow-lg w-full"
             />
             <div className="absolute -bottom-4 -right-4 bg-brand-yellow rounded-lg p-4 shadow-lg">
