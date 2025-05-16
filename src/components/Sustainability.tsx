@@ -36,7 +36,7 @@ const Sustainability: React.FC = () => {
     },
     {
       icon: <ThumbsUp className="h-8 w-8" />,
-      title: "Zero PERC",
+      title: "Zero Toxins",
       description: "While other cleaners switched from one chemical to another — moving from PERC to petroleum-based solvents — we eliminated the toxins altogether."
     },
     {
