@@ -20,7 +20,6 @@ const Testimonials: React.FC = () => {
       name: "Keith M.",
       content: "The owner is a great guy, their prices are fair and service is top notch. I have been using them for over three years and It's the only place I go.",
       rating: 5,
-      avatar: "https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop"
     }
   ];
 

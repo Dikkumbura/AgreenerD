@@ -75,10 +75,14 @@ const Sustainability: React.FC = () => {
               className="group relative bg-white/5 backdrop-blur-sm rounded-2xl p-8 hover:bg-white/10 transition-all duration-300 border border-white/10 hover:border-brand-lime/30"
               style={{
                 transform: `translateY(${index * 20}px)`,
-                animation: `float 3s ease-in-out infinite ${index * 0.5}s`
+                animation: `float 3s ease-in-out infinite ${index * 0.5}s`,
+                '@media (max-width: 768px)': {
+                  animation: 'none',
+                  transform: 'none'
+                }
               }}
             >
-              <div className="absolute -top-4 -right-4 bg-brand-lime/20 w-20 h-20 rounded-full blur-2xl group-hover:bg-brand-lime/30 transition-all duration-300"></div>
+              <div className="absolute -top-4 -right-4 bg-brand-lime/20 w-20 h-20 rounded-full md:blur-2xl group-hover:bg-brand-lime/30 transition-all duration-300"></div>
               <div className="relative">
                 <div className="rounded-xl bg-brand-lime/20 w-14 h-14 flex items-center justify-center mb-6 group-hover:bg-brand-lime/30 transition-colors duration-300">
                   <div className="text-brand-lime group-hover:scale-110 transition-transform duration-300">

@@ -56,9 +56,9 @@ function App() {
 
   return (
     <ErrorBoundary>
-      <div className="min-h-screen bg-white pt-16 md:pt-20">
+      <div className="min-h-screen bg-white pt-16 md:pt-20 overflow-x-hidden">
         <Header />
-        <main className="overflow-x-hidden">
+        <main>
           <Hero />
           <ProblemSolution />
           <IconGrid />
