@@ -37,7 +37,7 @@ const Sustainability: React.FC = () => {
     {
       icon: <ThumbsUp className="h-8 w-8" />,
       title: "Zero PERC",
-      description: "We've eliminated perchloroethylene (PERC), a toxic chemical commonly used in dry cleaning that's linked to cancer, neurological damage, and environmental harm. Your clothes and our planet deserve better."
+      description: "While other cleaners switched from one chemical to another — moving from PERC to petroleum-based solvents — we eliminated the toxins altogether."
     },
     {
       icon: <Recycle className="h-8 w-8" />,

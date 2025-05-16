@@ -24,8 +24,7 @@ const ProblemSolution: React.FC = () => {
               Traditional Dry Cleaning Is Toxic.
             </h2>
             <p className="text-lg text-gray-700 mb-8">
-              Most dry cleaners still use perchloroethylene—a chemical linked to cancer and skin irritation. 
-              These toxins soak into your clothes, your skin, and your air.
+            Most dry cleaners have moved from toxic perchloroethylene (PERC) to less harmful petroleum-based solvents, but these newer chemicals still carry health risks, environmental concerns, and leave behind chemical residue.
             </p>
             <div className="bg-brand-lime/10 p-6 rounded-lg">
               <div className="flex items-start mb-4">
@@ -37,8 +36,7 @@ const ProblemSolution: React.FC = () => {
                     We do it differently
                   </h3>
                   <p className="text-gray-700">
-                    A Greener Cleaner uses EPA-approved wet cleaning—safe, effective, 
-                    and water-based with zero toxins.
+                  Our EPA-approved wet cleaning system uses only water and biodegradable detergents, so your clothes are truly clean, not chemically masked.
                   </p>
                 </div>
               </div>
