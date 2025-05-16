@@ -138,7 +138,7 @@ export function AnimatedTestimonials({
                 transition={{ duration: 0.5, ease: "easeInOut" }}
                 style={{ zIndex: activeIndex === index ? 10 : 0 }}
               >
-                <div className="bg-white border shadow-lg rounded-xl p-4 md:p-8 h-full flex flex-col">
+                <div className="bg-white border shadow-lg rounded-xl p-4 pb-6 md:p-8 h-full flex flex-col">
                   <div className="mb-4 md:mb-6 flex gap-2">
                     {Array(testimonial.rating)
                       .fill(0)
@@ -153,7 +153,7 @@ export function AnimatedTestimonials({
 
                   <Separator className="my-3 md:my-4" />
 
-                  <div className="flex items-center gap-3 md:gap-4">
+                  <div className="flex items-center gap-3 md:gap-4 pb-2">
                     <Avatar className="h-10 w-10 md:h-12 md:w-12 border">
                       <AvatarImage src={testimonial.avatar} alt={testimonial.name} />
                       <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
