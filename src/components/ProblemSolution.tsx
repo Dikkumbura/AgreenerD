@@ -13,8 +13,8 @@ const ProblemSolution: React.FC = () => {
               alt="Traditional dry cleaning chemicals"
               className="rounded-lg shadow-lg w-full max-w-[85%] sm:max-w-full mx-auto"
             />
-            <div className="absolute -bottom-4 -right-4 bg-brand-yellow rounded-lg p-3 sm:p-4 shadow-lg">
-              <AlertTriangle className="h-6 w-6 sm:h-8 sm:w-8 text-brand-navy" />
+            <div className="absolute -bottom-4 right-2 sm:right-0 bg-brand-yellow rounded-lg p-2 sm:p-3 shadow-lg">
+              <AlertTriangle className="h-5 w-5 sm:h-6 sm:w-6 text-brand-navy" />
             </div>
           </div>
 
