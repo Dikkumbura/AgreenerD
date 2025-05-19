@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import ProblemSolution from './components/ProblemSolution';
@@ -8,6 +9,7 @@ import Testimonials from './components/Testimonials';
 import HowItWorks from './components/HowItWorks';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
+import BridalGownComponent from './components/BridalGown';
 
 class ErrorBoundary extends React.Component<
   { children: React.ReactNode },
@@ -48,6 +50,20 @@ class ErrorBoundary extends React.Component<
   }
 }
 
+function HomePage() {
+  return (
+    <>
+      <Hero />
+      <ProblemSolution />
+      <IconGrid />
+      <Sustainability />
+      <Testimonials />
+      <HowItWorks />
+      <CTA />
+    </>
+  );
+}
+
 function App() {
   useEffect(() => {
     console.log('App mounted - Environment:', import.meta.env.MODE);
@@ -56,19 +72,18 @@ function App() {
 
   return (
     <ErrorBoundary>
-      <div className="min-h-screen bg-white pt-16 md:pt-20 overflow-x-hidden">
-        <Header />
-        <main>
-          <Hero />
-          <ProblemSolution />
-          <IconGrid />
-          <Sustainability />
-          <Testimonials />
-          <HowItWorks />
-          <CTA />
-        </main>
-        <Footer />
-      </div>
+      <Router>
+        <div className="min-h-screen bg-white pt-16 md:pt-20 overflow-x-hidden">
+          <Header />
+          <main>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/bridal-gown" element={<BridalGownComponent />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      </Router>
     </ErrorBoundary>
   );
 }
