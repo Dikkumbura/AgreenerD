@@ -62,7 +62,7 @@ const BridalGownComponent = () => {
           >
             Wedding Gown Cleaning & Preservation
             <span className="block text-brand-lime mt-2">
-              Non-Toxic, Eco-Friendly Care for Brides in Jacksonville
+              Non-Toxic, Eco‑Friendly Care for Brides in Jacksonville
             </span>
           </h1>
           <p className="text-lg md:text-xl text-[#142C50]/80 font-medium mb-10 max-w-2xl">
