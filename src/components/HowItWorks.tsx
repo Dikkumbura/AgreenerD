@@ -15,15 +15,15 @@ const HowItWorks: React.FC = () => {
   return (
     <section id="how-it-works" className="py-20 bg-white">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-brand-navy mb-4">
-            How It Works
-          </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            Our eco-friendly cleaning service is as convenient as it is effective. Here's our simple three-step process.
-          </p>
-        </div>
-
+          <div className="text-center mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-navy mb-4">
+              How It Works
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Our eco-friendly cleaning service is as convenient as it is effective. Here's our simple three-step process.
+            </p>
+          </div>
+          
         <TimelineRoot>
           <TimelineItem>
             <TimelineConnector>
@@ -70,14 +70,14 @@ const HowItWorks: React.FC = () => {
             </TimelineContent>
           </TimelineItem>
         </TimelineRoot>
-
-        <div className="mt-16 text-center">
-          <button className="bg-brand-navy hover:bg-brand-navy/90 text-white font-medium py-3 px-6 rounded-full transition-colors inline-flex items-center">
-            Schedule Your Free Pickup Today
-            <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-            </svg>
-          </button>
+          
+          <div className="mt-16 text-center">
+            <button className="bg-brand-navy hover:bg-brand-navy/90 text-white font-medium py-3 px-6 rounded-full transition-colors inline-flex items-center">
+              Schedule Your Free Pickup Today
+              <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+              </svg>
+            </button>
         </div>
       </div>
     </section>

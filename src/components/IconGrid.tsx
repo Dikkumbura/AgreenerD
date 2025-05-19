@@ -43,13 +43,13 @@ const FeatureItem: React.FC<FeatureItemProps> = ({ icon, title, description, del
       ref={itemRef}
       className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-700 opacity-0 translate-y-8"
     >
-      <div className="rounded-full bg-brand-lime/10 w-16 h-16 flex items-center justify-center mb-6">
-        {icon}
-      </div>
-      <h3 className="text-xl font-semibold mb-3 text-brand-navy">{title}</h3>
-      <p className="text-gray-600">{description}</p>
+    <div className="rounded-full bg-brand-lime/10 w-16 h-16 flex items-center justify-center mb-6">
+      {icon}
     </div>
-  );
+    <h3 className="text-xl font-semibold mb-3 text-brand-navy">{title}</h3>
+    <p className="text-gray-600">{description}</p>
+  </div>
+);
 };
 
 const IconGrid: React.FC = () => {

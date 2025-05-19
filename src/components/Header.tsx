@@ -7,11 +7,11 @@ const Header: React.FC = () => {
   const location = useLocation();
 
   const navItems = [
+    { name: 'Bridal Gown', path: '/bridal-gown', special: true },
     { name: 'About', path: '/#about' },
     { name: 'Services', path: '/#services' },
     { name: 'How It Works', path: '/#how-it-works' },
     { name: 'Sustainability', path: '/#sustainability' },
-    { name: 'Bridal Gown', path: '/bridal-gown' },
     { name: 'Contact', path: '/#contact' }
   ];
 
@@ -32,9 +32,11 @@ const Header: React.FC = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className={`text-brand-navy/80 hover:text-brand-navy transition-colors ${
-                  location.pathname === item.path ? 'text-brand-navy font-semibold' : ''
-                }`}
+                className={`
+                  ${item.special ? 'text-brand-lime font-semibold border-2 border-brand-lime px-4 py-1 rounded-full hover:bg-brand-lime hover:text-white' : 'text-brand-navy/80 hover:text-brand-navy'}
+                  transition-all duration-300
+                  ${location.pathname === item.path ? 'text-brand-navy font-semibold' : ''}
+                `}
               >
                 {item.name}
               </Link>
@@ -62,9 +64,11 @@ const Header: React.FC = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className={`block text-brand-navy/80 hover:text-brand-navy transition-colors ${
-                  location.pathname === item.path ? 'text-brand-navy font-semibold' : ''
-                }`}
+                className={`
+                  block transition-colors
+                  ${item.special ? 'text-brand-lime font-semibold border-2 border-brand-lime px-4 py-1 rounded-full text-center hover:bg-brand-lime hover:text-white' : 'text-brand-navy/80 hover:text-brand-navy'}
+                  ${location.pathname === item.path ? 'text-brand-navy font-semibold' : ''}
+                `}
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
