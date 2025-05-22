@@ -24,95 +24,40 @@
     </div>
     <script type="module" src="/src/main.tsx"></script>
 
-    <script type="module">
-
-  const FileUploadExtension = {
-  name: 'FileUpload',
-  type: 'response',
-  match: ({ trace }) =>
-    trace.type === 'ext_fileUpload' || trace.payload.name === 'ext_fileUpload',
-  render: ({ trace, element }) => {
-    const fileUploadContainer = document.createElement('div')
-    fileUploadContainer.innerHTML = `
-      <style>
-        .my-file-upload {
-          border: 2px dashed rgba(46, 110, 225, 0.3);
-          padding: 20px;
-          text-align: center;
-          cursor: pointer;
-        }
-      </style>
-      <div class='my-file-upload'>Drag and drop a file here or click to upload</div>
-      <input type='file' style='display: none;'>
-    `
-
-    const fileInput = fileUploadContainer.querySelector('input[type=file]')
-    const fileUploadBox = fileUploadContainer.querySelector('.my-file-upload')
-
-    fileUploadBox.addEventListener('click', function () {
-      fileInput.click()
-    })
-
-    fileInput.addEventListener('change', function () {
-      const file = fileInput.files[0]
-      console.log('File selected:', file)
-
-      fileUploadContainer.innerHTML = `<img src="https://s3.amazonaws.com/com.voiceflow.studio/share/upload/upload.gif" alt="Upload" width="50" height="50">`
-
-      var data = new FormData()
-      data.append('file', file)
-
-      fetch('https://tmpfiles.org/api/v1/upload', {
-        method: 'POST',
-        body: data,
-      })
-        .then((response) => {
-          if (response.ok) {
-            return response.json()
-          } else {
-            throw new Error('Upload failed: ' + response.statusText)
+ <div style="width: 0; height: 0;" id="VG_OVERLAY_CONTAINER">
+      <!-- Here is where TIXAE Agents renders the widget. -->
+      <!-- Set render to 'full-width' then adjust the width and height to 500px (for example) to render the chatbot itself without the popup. -->
+  </div>
+  
+  <!-- Remove 'defer' if you want widget to load faster (Will affect website loading) -->
+  <script defer>
+      (function() {
+          window.VG_CONFIG = {
+              ID: "ftzzlWf8AHeI61G4YzNY", // YOUR AGENT ID
+              region: 'na', // YOUR ACCOUNT REGION 
+              render: 'bottom-right', // can be 'full-width' or 'bottom-left' or 'bottom-right'
+              // modalMode: true, // Set this to 'true' to open the widget in modal mode
+              stylesheets: [
+                  // Base TIXAE Agents CSS
+                  "https://vg-bunny-cdn.b-cdn.net/vg_live_build/styles.css",
+                  // Add your custom css stylesheets, Can also add relative URL ('/public/your-file.css)
+              ],
+              // THIS IS SUPPOSED TO BE CHANGED OR REMOVED.
+              // user: {
+              //     name: 'John Doe', // User's name
+              //     email: 'johndoe@gmail.com', // User's email
+              //     phone: '+1234567890', // User's phone number
+              // }
+              // Optional user data -- end
+              // **
+              // userID: 'USER_ID', // If you want to use your own user_id
+              // autostart: true, // Whether to autostart the chatbot with the proactive message
           }
-        })
-        .then((result) => {
-          fileUploadContainer.innerHTML =
-            '<img src="https://s3.amazonaws.com/com.voiceflow.studio/share/check/check.gif" alt="Done" width="50" height="50">'
-          console.log('File uploaded:', result.data.url)
-          window.voiceflow.chat.interact({
-            type: 'complete',
-            payload: {
-              file: result.data.url.replace(
-                'https://tmpfiles.org/',
-                'https://tmpfiles.org/dl/'
-              ),
-            },
-          })
-        })
-        .catch((error) => {
-          console.error(error)
-          fileUploadContainer.innerHTML = '<div>Error during upload</div>'
-        })
-    })
-
-    element.appendChild(fileUploadContainer)
-  },
-}
-    </script>
-    
-    <script type="text/javascript">
-      (function(d, t) {
-          var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-          v.onload = function() {
-            window.voiceflow.chat.load({
-              verify: { projectID: '6731e23add74c835a2780274' },
-              url: 'https://general-runtime.voiceflow.com',
-              versionID: 'production',
-              voice: {
-                url: "https://runtime-api.voiceflow.com"
-              },
-            });
-          }
-          v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
-      })(document, 'script');
-    </script>
+          var VG_SCRIPT = document.createElement("script");
+          VG_SCRIPT.src = "https://vg-bunny-cdn.b-cdn.net/vg_live_build/vg_bundle.js";
+          VG_SCRIPT.defer = true; // Remove 'defer' if you want widget to load faster (Will affect website loading)
+          document.body.appendChild(VG_SCRIPT);
+      })()
+  </script>
   </body>
 </html>
