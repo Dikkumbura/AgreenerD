@@ -80,7 +80,7 @@ const Footer: React.FC = () => {
                 Downloading, republication, retransmission, or reproduction of content on this website is strictly prohibited.
               </p>
               <div className="text-center md:text-right">
-                <Link to="/terms-privacy" className="text-gray-400 hover:text-brand-lime text-sm transition-colors">
+                <Link to="/t/tou-and-privacy" className="text-gray-400 hover:text-brand-lime text-sm transition-colors">
                   Terms of Use | Privacy Policy
                 </Link>
               </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import { HelmetProvider } from 'react-helmet-async';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import ProblemSolution from './components/ProblemSolution';
@@ -14,7 +15,7 @@ import WetCleaning from './components/WetCleaning';
 import DeliveryAreas from './components/DeliveryAreas';
 import TermsPrivacy from './components/TermsPrivacy';
 import PageLoader from './components/PageLoader';
-import VoiceflowAgent from './components/VoiceflowAgent';
+import SEOHead from './components/SEOHead';
 
 class ErrorBoundary extends React.Component<
   { children: React.ReactNode },
@@ -58,6 +59,13 @@ class ErrorBoundary extends React.Component<
 function HomePage() {
   return (
     <>
+      <SEOHead 
+        title="Dry Cleaners | Jacksonville, FL | A Greener Cleaner" 
+        description="We offer mobile dry cleaning pickup and delivery services. Call us at (904) 344-7336 in Jacksonville, FL!"
+        keywords="dry cleaning Jacksonville, wet cleaning, eco friendly dry cleaning, green dry cleaner, pickup delivery, St Johns County, Nocatee, Julington Creek, PERC free"
+        canonicalUrl="https://www.agreenerdrycleaner.com/"
+        ogImage="https://lirp.cdn-website.com/d951d82e/dms3rep/multi/opt/Logo-Open-Graph-1920w.jpg"
+      />
       <Hero />
       <ProblemSolution />
       <IconGrid />
@@ -73,16 +81,18 @@ function AppRoutesWithLoader() {
   const [displayedLocation, setDisplayedLocation] = useState(location);
 
   useEffect(() => {
+    // On route change, scroll to top and show loader
+    window.scrollTo(0, 0);
     if (location !== displayedLocation) {
       setLoading(true);
       const timeout = setTimeout(() => {
         setDisplayedLocation(location);
         setLoading(false);
-      }, 700); // Loader duration
+      }, 500); // Adjust loader duration as needed
       return () => clearTimeout(timeout);
     }
     // eslint-disable-next-line
-  }, [location, displayedLocation]);
+  }, [location]);
 
   return (
     <>
@@ -94,11 +104,11 @@ function AppRoutesWithLoader() {
             <Routes location={displayedLocation}>
               <Route path="/" element={<HomePage />} />
               <Route path="/wedding-gown-dry-cleaning" element={<BridalGownComponent />} />
-              <Route path="/schedule-pickup" element={<SchedulePickupForm />} />
-              <Route path="/contact" element={<ContactUs />} />
-              <Route path="/wet-cleaning" element={<WetCleaning />} />
+              <Route path="/professional-dry-cleaning" element={<WetCleaning />} />
               <Route path="/delivery-areas" element={<DeliveryAreas />} />
-              <Route path="/terms-privacy" element={<TermsPrivacy />} />
+              <Route path="/contact-dry-cleaning-experts" element={<ContactUs />} />
+              <Route path="/dry-cleaning-delivery-services" element={<SchedulePickupForm />} />
+              <Route path="/t/tou-and-privacy" element={<TermsPrivacy />} />
             </Routes>
           </main>
           <Footer />
@@ -115,12 +125,13 @@ function App() {
   }, []);
 
   return (
-    <ErrorBoundary>
-      <Router>
-        <VoiceflowAgent />
-        <AppRoutesWithLoader />
-      </Router>
-    </ErrorBoundary>
+    <HelmetProvider>
+      <ErrorBoundary>
+        <Router>
+          <AppRoutesWithLoader />
+        </Router>
+      </ErrorBoundary>
+    </HelmetProvider>
   );
 }
 

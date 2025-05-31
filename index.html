@@ -2,7 +2,8 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="icon" type="image/webp" href="/images/logo.webp" />
+    <link rel="apple-touch-icon" href="/images/logo.webp" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="A Greener Cleaner - Jacksonville's eco-friendly dry cleaning service. No toxic chemicals, just clean clothes." />
     <title>A Greener Cleaner | Eco-Friendly Dry Cleaning in Jacksonville, FL</title>
@@ -346,13 +347,32 @@
       window.FileUploadExtension = FileUploadExtension;
     </script>
 
-    <!-- Load Voiceflow widget library only (no agent loading) -->
+    <!-- Load Voiceflow widget library only -->
     <script type="text/javascript">
       (function(d, t) {
           var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
           v.onload = function() {
-            console.log('Voiceflow widget library loaded');
-          }
+            console.log('Voiceflow widget library loaded and ready.');
+            // Now, dynamically load the agent based on the current path
+            var isWeddingPage = window.location.pathname === '/wedding-gown-dry-cleaning';
+            var config = {
+              verify: { projectID: isWeddingPage ? '683af86460d51f8ed2823e02' : '683a24243bd7a650833246a8' }, // Pearl or Leafy
+              url: 'https://general-runtime.voiceflow.com',
+              versionID: 'production',
+              assistant: { // Ensure extensions are passed here
+                extensions: window.FileUploadExtension ? [window.FileUploadExtension] : []
+              }
+            };
+            if (window.voiceflow?.chat?.load) {
+              window.voiceflow.chat.load(config);
+              console.log('Loaded agent for:', window.location.pathname);
+            } else {
+              console.error('Voiceflow chat.load not available after library load.');
+            }
+          };
+          v.onerror = function() {
+            console.error('Failed to load Voiceflow widget library.');
+          };
           v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; 
           v.type = "text/javascript"; 
           s.parentNode.insertBefore(v, s);

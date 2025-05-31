@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  
+  <!-- Home Page -->
+  <url>
+    <loc>https://www.agreenerdrycleaner.com/</loc>
+    <lastmod>2024-01-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+    <image:image>
+      <image:loc>https://www.agreenerdrycleaner.com/images/logo.webp</image:loc>
+      <image:title>A Greener Cleaner Logo</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Wedding Gown Dry Cleaning -->
+  <url>
+    <loc>https://www.agreenerdrycleaner.com/wedding-gown-dry-cleaning</loc>
+    <lastmod>2024-01-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <image:image>
+      <image:loc>https://www.agreenerdrycleaner.com/images/before.png</image:loc>
+      <image:title>Wedding Dress Before Cleaning</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://www.agreenerdrycleaner.com/images/after.png</image:loc>
+      <image:title>Wedding Dress After Cleaning</image:title>
+    </image:image>
+  </url>
+  
+  <!-- Wet Cleaning -->
+  <url>
+    <loc>https://www.agreenerdrycleaner.com/professional-dry-cleaning</loc>
+    <lastmod>2024-01-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Delivery Areas -->
+  <url>
+    <loc>https://www.agreenerdrycleaner.com/delivery-areas</loc>
+    <lastmod>2024-01-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  
+  <!-- Contact Us -->
+  <url>
+    <loc>https://www.agreenerdrycleaner.com/contact-dry-cleaning-experts</loc>
+    <lastmod>2024-01-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  
+  <!-- Schedule Pickup -->
+  <url>
+    <loc>https://www.agreenerdrycleaner.com/dry-cleaning-delivery-services</loc>
+    <lastmod>2024-01-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  
+  <!-- Terms & Privacy -->
+  <url>
+    <loc>https://www.agreenerdrycleaner.com/t/tou-and-privacy</loc>
+    <lastmod>2024-01-29</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  
+</urlset> 
