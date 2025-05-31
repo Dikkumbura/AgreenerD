@@ -7,12 +7,10 @@ const Header: React.FC = () => {
   const location = useLocation();
 
   const navItems = [
-    { name: 'Bridal Gown', path: '/bridal-gown', special: true },
-    { name: 'About', path: '/#about' },
-    { name: 'Services', path: '/#services' },
-    { name: 'How It Works', path: '/#how-it-works' },
-    { name: 'Sustainability', path: '/#sustainability' },
-    { name: 'Contact', path: '/#contact' }
+    { name: 'Wedding Gown Cleaning', path: '/wedding-gown-dry-cleaning', special: true },
+    { name: 'Wet Cleaning', path: '/wet-cleaning' },
+    { name: 'Delivery Areas', path: '/delivery-areas' },
+    { name: 'Contact Us', path: '/contact' },
   ];
 
   return (
@@ -29,21 +27,31 @@ const Header: React.FC = () => {
           {/* Desktop Navigation */}
           <nav className="hidden md:flex items-center space-x-6">
             {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className={`
-                  ${item.special ? 'text-brand-lime font-semibold border-2 border-brand-lime px-4 py-1 rounded-full hover:bg-brand-lime hover:text-white' : 'text-brand-navy/80 hover:text-brand-navy'}
-                  transition-all duration-300
-                  ${location.pathname === item.path ? 'text-brand-navy font-semibold' : ''}
-                `}
-              >
-                {item.name}
-              </Link>
+              item.path === '/wedding-gown-dry-cleaning' ? (
+                <a
+                  key={item.name}
+                  href={item.path}
+                  className={
+                    `${item.special ? 'text-brand-lime font-semibold border-2 border-brand-lime px-4 py-1 rounded-full hover:bg-brand-lime hover:text-white' : 'text-brand-navy/80 hover:text-brand-navy'} transition-all duration-300 ${location.pathname === item.path ? 'text-brand-navy font-semibold' : ''}`
+                  }
+                >
+                  {item.name}
+                </a>
+              ) : (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className={
+                    `${item.special ? 'text-brand-lime font-semibold border-2 border-brand-lime px-4 py-1 rounded-full hover:bg-brand-lime hover:text-white' : 'text-brand-navy/80 hover:text-brand-navy'} transition-all duration-300 ${location.pathname === item.path ? 'text-brand-navy font-semibold' : ''}`
+                  }
+                >
+                  {item.name}
+                </Link>
+              )
             ))}
-            <button className="bg-brand-lime hover:bg-brand-lime/90 text-white px-4 py-2 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg active:scale-95">
+            <Link to="/schedule-pickup" className="bg-brand-lime hover:bg-brand-lime/90 text-white px-4 py-2 rounded-full transition-all duration-300 transform hover:scale-105 hover:shadow-lg active:scale-95">
               Schedule Pickup
-            </button>
+            </Link>
           </nav>
 
           {/* Mobile Menu Button */}
@@ -74,9 +82,9 @@ const Header: React.FC = () => {
                 {item.name}
               </Link>
             ))}
-            <button className="w-full bg-brand-lime hover:bg-brand-lime/90 text-white px-4 py-2 rounded-full transition-all duration-300">
+            <Link to="/schedule-pickup" className="w-full bg-brand-lime hover:bg-brand-lime/90 text-white px-4 py-2 rounded-full transition-all duration-300 text-center">
               Schedule Pickup
-            </button>
+            </Link>
           </div>
         </div>
       )}

@@ -22,22 +22,342 @@
         <p style="color: #1a365d;">Loading...</p>
       </div>
     </div>
+
     <script type="module" src="/src/main.tsx"></script>
-    <script type="text/javascript">
-      (function(d, t) {
-          var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
-          v.onload = function() {
-            window.voiceflow.chat.load({
-              verify: { projectID: '6731e23add74c835a2780274' },
-              url: 'https://general-runtime.voiceflow.com',
-              versionID: 'production',
-              voice: {
-                url: "https://runtime-api.voiceflow.com"
-              }
+
+
+    <div style="width: 0; height: 0;" id="VG_OVERLAY_CONTAINER">
+      <!-- Here is where TIXAE Agents renders the widget. -->
+      <!-- Set render to 'full-width' then adjust the width and height to 500px (for example) to render the chatbot itself without the popup. -->
+</div>
+
+<script>
+  const FileUploadExtension = {
+    name: 'FileUpload',
+    type: 'response',
+    match: ({ trace }) => {
+      console.log('MATCH - Full trace:', trace);
+      return trace.type === 'ext_fileUpload';
+    },
+    render: ({ trace, element }) => {
+      console.log('RENDER - Full trace:', trace);
+      
+      // Simple payload detection
+      const isWedding = JSON.stringify(trace).includes('wedding');
+      console.log('Is wedding detected?', isWedding);
+      
+      // Cloudinary configuration
+      const CLOUDINARY_CLOUD_NAME = 'dkeenrdho';
+      const CLOUDINARY_UPLOAD_PRESET = 'image uploads';
+      
+      const container = document.createElement('div');
+      container.innerHTML = `
+        <style>
+          .vf-form {
+            width: 100%;
+            padding: 10px;
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+          }
+          .vf-title {
+            text-align: center;
+            color: #2e6ee1;
+            margin-bottom: 15px;
+            font-size: 16px;
+            font-weight: bold;
+          }
+          .vf-group {
+            margin-bottom: 10px;
+          }
+          .vf-label {
+            display: block;
+            margin-bottom: 3px;
+            font-weight: bold;
+          }
+          .vf-input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+          }
+          .vf-row {
+            display: flex;
+            gap: 5px;
+          }
+          .vf-row > div {
+            flex: 1;
+          }
+          .vf-btn {
+            width: 100%;
+            background: #2e6ee1;
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+          }
+          .vf-upload {
+            border: 2px dashed #ccc;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            margin: 10px 0;
+          }
+          .vf-upload:hover {
+            border-color: #2e6ee1;
+          }
+          .vf-file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 5px;
+            background: #f0f0f0;
+            margin: 2px 0;
+            border-radius: 3px;
+            font-size: 12px;
+          }
+          .vf-file-item.uploading {
+            background: #e3f2fd;
+            border-left: 3px solid #2196f3;
+          }
+          .vf-file-item.completed {
+            background: #e8f5e8;
+            border-left: 3px solid #4caf50;
+          }
+          .vf-file-item.error {
+            background: #ffebee;
+            border-left: 3px solid #f44336;
+          }
+          .required { color: red; }
+        </style>
+        
+        <div class="vf-form">
+          <div class="vf-title">${isWedding ? 'Wedding Gown Pickup' : 'Regular Pickup'}</div>
+          
+          <form id="vfForm">
+            <div class="vf-group">
+              <label class="vf-label">Full Name <span class="required">*</span></label>
+              <input type="text" class="vf-input" name="fullName" required>
+            </div>
+            
+            <div class="vf-group">
+              <label class="vf-label">Email <span class="required">*</span></label>
+              <input type="email" class="vf-input" name="email" required>
+            </div>
+            
+            <div class="vf-group">
+              <label class="vf-label">Phone <span class="required">*</span></label>
+              <input type="tel" class="vf-input" name="phone" required>
+            </div>
+            
+            <div class="vf-group">
+              <label class="vf-label">Contact Method <span class="required">*</span></label>
+              <select class="vf-input" name="preferredContact" required>
+                <option value="">Select...</option>
+                <option value="phone">Phone</option>
+                <option value="email">Email</option>
+                <option value="text">Text</option>
+              </select>
+            </div>
+            
+            <div class="vf-group">
+              <label class="vf-label">Date & Time <span class="required">*</span></label>
+              <div class="vf-row">
+                <div><input type="date" class="vf-input" name="pickupDate" required></div>
+                <div><input type="time" class="vf-input" name="pickupTime" required></div>
+              </div>
+            </div>
+            
+            <div class="vf-group">
+              <label class="vf-label">Address <span class="required">*</span></label>
+              <textarea class="vf-input" name="pickupAddress" rows="3" required></textarea>
+            </div>
+            
+            <div class="vf-group">
+              <label class="vf-label">Images ${isWedding ? '<span class="required">*</span>' : '(Optional)'}</label>
+              <div class="vf-upload" id="uploadArea">
+                📷 Click to upload images
+                <div style="font-size: 12px; color: #666; margin-top: 5px;">
+                  ${isWedding ? 'Wedding gown images required' : 'Show us problem areas'}
+                </div>
+              </div>
+              <input type="file" id="fileInput" multiple accept="image/*" style="display: none;">
+              <div id="fileList"></div>
+            </div>
+            
+            <button type="submit" class="vf-btn">Schedule Pickup</button>
+          </form>
+        </div>
+      `;
+      
+      const form = container.querySelector('#vfForm');
+      const uploadArea = container.querySelector('#uploadArea');
+      const fileInput = container.querySelector('#fileInput');
+      const fileList = container.querySelector('#fileList');
+      
+      let fileObjects = []; // Store file objects with upload status and URLs
+      
+      // File upload handling
+      uploadArea.addEventListener('click', () => fileInput.click());
+      
+      fileInput.addEventListener('change', (e) => {
+        const newFiles = Array.from(e.target.files);
+        newFiles.forEach(file => {
+          fileObjects.push({
+            file: file,
+            status: 'pending',
+            url: null,
+            name: file.name
+          });
+        });
+        updateFileDisplay();
+      });
+      
+      function updateFileDisplay() {
+        fileList.innerHTML = fileObjects.map((fileObj, index) => {
+          let statusText = '';
+          let statusClass = '';
+          
+          switch(fileObj.status) {
+            case 'pending':
+              statusText = 'Ready to upload';
+              statusClass = '';
+              break;
+            case 'uploading':
+              statusText = 'Uploading...';
+              statusClass = 'uploading';
+              break;
+            case 'completed':
+              statusText = '✓ Uploaded';
+              statusClass = 'completed';
+              break;
+            case 'error':
+              statusText = '✗ Failed';
+              statusClass = 'error';
+              break;
+          }
+          
+          return `<div class="vf-file-item ${statusClass}">
+            <span>${fileObj.name}</span>
+            <span>${statusText}</span>
+          </div>`;
+        }).join('');
+      }
+      
+      async function uploadFilesToCloudinary() {
+        const uploadPromises = fileObjects.map(async (fileObj, index) => {
+          if (fileObj.status === 'completed') return fileObj.url;
+          
+          try {
+            fileObj.status = 'uploading';
+            updateFileDisplay();
+            
+            const formData = new FormData();
+            formData.append('file', fileObj.file);
+            formData.append('upload_preset', CLOUDINARY_UPLOAD_PRESET);
+            formData.append('cloud_name', CLOUDINARY_CLOUD_NAME);
+            
+            const response = await fetch(
+              `https://api.cloudinary.com/v1_1/${CLOUDINARY_CLOUD_NAME}/image/upload`,
+              { method: 'POST', body: formData }
+            );
+            
+            if (!response.ok) throw new Error(`Upload failed: ${response.statusText}`);
+            
+            const result = await response.json();
+            if (result.error) throw new Error(result.error.message);
+            
+            fileObj.status = 'completed';
+            fileObj.url = result.secure_url;
+            updateFileDisplay();
+            
+            return result.secure_url;
+          } catch (error) {
+            console.error(`Failed to upload ${fileObj.name}:`, error);
+            fileObj.status = 'error';
+            updateFileDisplay();
+            return null;
+          }
+        });
+        
+        const results = await Promise.all(uploadPromises);
+        return results.filter(url => url !== null);
+      }
+      
+      // Form submit
+      form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        
+        const formData = new FormData(form);
+        const submitBtn = form.querySelector('.vf-btn');
+        
+        // Validate wedding gown images
+        if (isWedding && fileObjects.length === 0) {
+          alert('Wedding gown images are required!');
+          return;
+        }
+        
+        // Disable submit button during upload
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Uploading images...';
+        
+        try {
+          // Upload images to Cloudinary
+          const imageUrls = await uploadFilesToCloudinary();
+          
+          // Prepare final data
+          const data = {
+            serviceType: isWedding ? 'wedding_gown' : 'regular',
+            fullName: formData.get('fullName'),
+            email: formData.get('email'),
+            phone: formData.get('phone'),
+            preferredContact: formData.get('preferredContact'),
+            pickupDate: formData.get('pickupDate'),
+            pickupTime: formData.get('pickupTime'),
+            pickupAddress: formData.get('pickupAddress'),
+            hasImages: imageUrls.length > 0,
+            imageUrls: imageUrls,
+            submittedAt: new Date().toISOString()
+          };
+          
+          console.log('Form submitted with data:', data);
+          
+          // Send to Voiceflow
+          if (window.voiceflow?.chat?.interact) {
+            window.voiceflow.chat.interact({
+              type: 'complete',
+              payload: data
             });
           }
-          v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
-      })(document, 'script');
-    </script>
+          
+        } catch (error) {
+          console.error('Form submission error:', error);
+          submitBtn.textContent = 'Error - Try Again';
+          submitBtn.disabled = false;
+        }
+      });
+      
+      element.appendChild(container);
+    }
+  };
+  
+  // Expose the extension to the window object so React can use it
+  window.FileUploadExtension = FileUploadExtension;
+  </script>
+  
+  <!-- Load Voiceflow widget library only (no agent loading) -->
+  <script type="text/javascript">
+    (function(d, t) {
+        var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+        v.onload = function() {
+          console.log('Voiceflow widget library loaded');
+        }
+        v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; 
+        v.type = "text/javascript"; 
+        s.parentNode.insertBefore(v, s);
+    })(document, 'script');
+  </script>
   </body>
 </html>

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Calendar, Info, Leaf, Recycle, Clock, Shield, Truck } from 'lucide-react';
+import { Calendar, Phone, Leaf, Recycle, Clock, Shield, Truck } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const Hero: React.FC = () => {
   return (
@@ -26,69 +27,69 @@ const Hero: React.FC = () => {
                 <Leaf className="h-5 w-5 text-white" />
               </div>
               <span className="text-sm font-medium bg-white/10 px-4 py-1 rounded-full">
-                Jacksonville's #1 Eco-Friendly Dry Cleaner
+                Your Green Dry Cleaners Since 2009
               </span>
             </div>
             
             <h1 className="text-5xl lg:text-7xl font-bold leading-tight mb-6">
-              Breathe Easy.
-              <span className="block mt-2 text-brand-lime">Wear Clean.</span>
+              Naturally Greener,
+              <span className="block mt-2 text-brand-lime">Fresher, and Cleaner!</span>
             </h1>
             
             <p className="text-xl text-gray-200 mb-8 max-w-xl">
-              No harsh chemicals. No toxic residue. Just truly clean clothes—inside and out.
+              Jacksonville's ONLY 100% Wet Cleaner! Safe, effective, and eco-conscious care. 
+              No toxic solvents, no harsh chemicals — just clean clothes.
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <button className="group bg-brand-lime hover:bg-brand-green text-white font-medium py-4 px-8 rounded-full transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-lg inline-flex items-center justify-center">
+              <Link to="/schedule-pickup" className="group bg-brand-lime hover:bg-brand-green text-white font-medium py-4 px-8 rounded-full transition-all duration-300 transform hover:translate-y-[-2px] hover:shadow-lg inline-flex items-center justify-center">
                 <Calendar className="mr-2 h-5 w-5 transition-transform group-hover:scale-110" />
                 Schedule Free Pickup
-              </button>
-              <button className="group bg-white/10 hover:bg-white/20 border-2 border-white/20 text-white font-medium py-4 px-8 rounded-full transition-all duration-300 backdrop-blur-sm inline-flex items-center justify-center">
-                <Info className="mr-2 h-5 w-5 transition-transform group-hover:scale-110" />
-                How Wet Cleaning Works
-              </button>
+              </Link>
+              <a href="tel:9043701007" className="group bg-white/10 hover:bg-white/20 border-2 border-white/20 text-white font-medium py-4 px-8 rounded-full transition-all duration-300 backdrop-blur-sm inline-flex items-center justify-center">
+                <Phone className="mr-2 h-5 w-5 transition-transform group-hover:scale-110" />
+                Call (904) 370-1007
+              </a>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 mt-12">
-              {[
-                { number: '5K+', label: 'Happy Customers' },
-                { number: '100%', label: 'Eco-Friendly' },
-                { number: '24H', label: 'Turnaround' }
-              ].map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-2xl font-bold text-brand-lime">{stat.number}</div>
-                  <div className="text-sm text-gray-300">{stat.label}</div>
-                </div>
-              ))}
+            {/* Contact Info */}
+            <div className="grid grid-cols-2 gap-6 mt-8 text-sm">
+              <div>
+                <div className="text-brand-lime font-semibold mb-1">Free Pick-Up & Delivery</div>
+                <div className="text-gray-300">Serving Jacksonville & St. Johns County</div>
+              </div>
+              <div>
+                <div className="text-brand-lime font-semibold mb-1">Locally Owned & Operated</div>
+                <div className="text-gray-300">Trusted since 2009</div>
+              </div>
             </div>
           </div>
 
           {/* Right Column - Service Benefits */}
           <div className="hidden lg:block relative">
             <div className="relative bg-white/5 rounded-3xl p-8 backdrop-blur-sm border border-white/10">
+              <h3 className="text-2xl font-bold text-white mb-6">Why Choose A Greener Cleaner?</h3>
               <div className="grid gap-6">
                 {[
                   {
                     icon: <Recycle className="h-8 w-8 text-brand-lime" />,
-                    title: "Eco-Friendly Process",
-                    description: "Our wet cleaning technology uses biodegradable detergents and pure water"
+                    title: "100% Wet Cleaning",
+                    description: "The only wet cleaner in Jacksonville - no toxic solvents or carcinogens"
                   },
                   {
                     icon: <Shield className="h-8 w-8 text-brand-lime" />,
-                    title: "Gentle on Fabrics",
-                    description: "Safe for delicate materials while tough on stains and odors"
+                    title: "Green Cleaning Services",
+                    description: "From stain removal to alterations - all fabric types handled with care"
                   },
                   {
                     icon: <Clock className="h-8 w-8 text-brand-lime" />,
-                    title: "24-Hour Service",
-                    description: "Quick turnaround with same-day service available"
+                    title: "Quick Delivery",
+                    description: "Save time with efficient pickup and delivery throughout Jacksonville"
                   },
                   {
                     icon: <Truck className="h-8 w-8 text-brand-lime" />,
-                    title: "Free Pickup & Delivery",
-                    description: "Convenient door-to-door service at no extra cost"
+                    title: "Competitive Pricing",
+                    description: "High-quality results without the high cost"
                   }
                 ].map((benefit, index) => (
                   <div key={index} className="flex items-start space-x-4 p-4 rounded-2xl bg-white/5 backdrop-blur-sm border border-white/10">

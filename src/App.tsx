@@ -1,15 +1,20 @@
-import React, { useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import ProblemSolution from './components/ProblemSolution';
 import IconGrid from './components/IconGrid';
-import Sustainability from './components/Sustainability';
 import Testimonials from './components/Testimonials';
-import HowItWorks from './components/HowItWorks';
 import CTA from './components/CTA';
 import Footer from './components/Footer';
 import BridalGownComponent from './components/BridalGown';
+import SchedulePickupForm from './components/SchedulePickupForm';
+import ContactUs from './components/ContactUs';
+import WetCleaning from './components/WetCleaning';
+import DeliveryAreas from './components/DeliveryAreas';
+import TermsPrivacy from './components/TermsPrivacy';
+import PageLoader from './components/PageLoader';
+import VoiceflowAgent from './components/VoiceflowAgent';
 
 class ErrorBoundary extends React.Component<
   { children: React.ReactNode },
@@ -56,10 +61,49 @@ function HomePage() {
       <Hero />
       <ProblemSolution />
       <IconGrid />
-      <Sustainability />
       <Testimonials />
-      <HowItWorks />
       <CTA />
+    </>
+  );
+}
+
+function AppRoutesWithLoader() {
+  const location = useLocation();
+  const [loading, setLoading] = useState(false);
+  const [displayedLocation, setDisplayedLocation] = useState(location);
+
+  useEffect(() => {
+    if (location !== displayedLocation) {
+      setLoading(true);
+      const timeout = setTimeout(() => {
+        setDisplayedLocation(location);
+        setLoading(false);
+      }, 700); // Loader duration
+      return () => clearTimeout(timeout);
+    }
+    // eslint-disable-next-line
+  }, [location, displayedLocation]);
+
+  return (
+    <>
+      <PageLoader show={loading} />
+      {!loading && (
+        <div className="min-h-screen bg-white pt-16 md:pt-20 overflow-x-hidden">
+          <Header />
+          <main>
+            <Routes location={displayedLocation}>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/wedding-gown-dry-cleaning" element={<BridalGownComponent />} />
+              <Route path="/schedule-pickup" element={<SchedulePickupForm />} />
+              <Route path="/contact" element={<ContactUs />} />
+              <Route path="/wet-cleaning" element={<WetCleaning />} />
+              <Route path="/delivery-areas" element={<DeliveryAreas />} />
+              <Route path="/terms-privacy" element={<TermsPrivacy />} />
+            </Routes>
+          </main>
+          <Footer />
+        </div>
+      )}
     </>
   );
 }
@@ -73,16 +117,8 @@ function App() {
   return (
     <ErrorBoundary>
       <Router>
-        <div className="min-h-screen bg-white pt-16 md:pt-20 overflow-x-hidden">
-          <Header />
-          <main>
-            <Routes>
-              <Route path="/" element={<HomePage />} />
-              <Route path="/bridal-gown" element={<BridalGownComponent />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
+        <VoiceflowAgent />
+        <AppRoutesWithLoader />
       </Router>
     </ErrorBoundary>
   );

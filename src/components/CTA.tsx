@@ -1,4 +1,6 @@
 import React, { useEffect, useRef } from 'react';
+import { Link } from 'react-router-dom';
+import { Calendar, Phone } from 'lucide-react';
 
 const CTA: React.FC = () => {
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -35,28 +37,39 @@ const CTA: React.FC = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            Ready to Detox Your Wardrobe?
+            Ready for Naturally Greener, Fresher, and Cleaner Clothes?
           </h2>
           <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-            Join thousands of Jacksonville residents who have switched to truly clean, eco-friendly dry cleaning. Your clothes (and the planet) will thank you.
+            Experience Jacksonville's ONLY 100% Wet Cleaner. Free pickup and delivery available throughout 
+            Jacksonville and St. Johns County.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-            <button className="bg-white hover:bg-gray-100 text-brand-navy font-medium py-3 px-8 rounded-full transition-colors shadow-lg inline-flex items-center">
+            <Link 
+              to="/schedule-pickup" 
+              className="bg-white hover:bg-gray-100 text-brand-navy font-medium py-3 px-8 rounded-full transition-colors shadow-lg inline-flex items-center"
+            >
+              <Calendar className="mr-2 h-5 w-5" />
               Schedule Free Pickup
-              <svg className="ml-2 h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-              </svg>
-            </button>
-            <button className="bg-transparent border-2 border-white hover:bg-white/10 text-white font-medium py-3 px-8 rounded-full transition-colors">
-              Learn More
-            </button>
+            </Link>
+            <Link 
+              to="/contact" 
+              className="bg-transparent border-2 border-white hover:bg-white/10 text-white font-medium py-3 px-8 rounded-full transition-colors inline-flex items-center"
+            >
+              <Phone className="mr-2 h-5 w-5" />
+              Contact Us Today
+            </Link>
           </div>
           
-          <div className="mt-12 inline-flex items-center bg-white/20 backdrop-blur-sm px-4 py-3 rounded-xl">
-            <svg className="h-5 w-5 text-white mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-            <span className="text-sm font-medium text-white">First-time customers receive 20% off their first order</span>
+          <div className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto">
+            <div className="bg-white/20 backdrop-blur-sm px-4 py-3 rounded-xl">
+              <span className="text-sm font-medium text-white">Locally Owned Since 2009</span>
+            </div>
+            <div className="bg-white/20 backdrop-blur-sm px-4 py-3 rounded-xl">
+              <span className="text-sm font-medium text-white">Free Pickup & Delivery</span>
+            </div>
+            <div className="bg-white/20 backdrop-blur-sm px-4 py-3 rounded-xl">
+              <span className="text-sm font-medium text-white">100% Eco-Friendly</span>
+            </div>
           </div>
         </div>
       </div>

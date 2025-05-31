@@ -1,5 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { Calendar, Phone, Star } from 'lucide-react';
 
 const BridalGownComponent = () => {
   const heroLeftRef = useRef<HTMLDivElement>(null);
@@ -48,29 +49,30 @@ const BridalGownComponent = () => {
 
   return (
     <div className="bg-white text-[#142C50] font-inter px-6 py-12 space-y-16">
-      {/* Hero Section: Two-column layout */}
-      <section className="max-w-6xl mx-auto flex flex-col md:flex-row items-center md:items-start gap-10 md:gap-16 mb-8">
-        {/* Left: Headline and subheadline */}
-        <div ref={heroLeftRef} className="flex-1 text-left">
-          <h1
-            className="text-3xl sm:text-4xl md:text-5xl font-poppins font-extrabold leading-tight tracking-tight mb-4 text-left"
-            style={{
-              lineHeight: 1.15,
-              letterSpacing: '-0.01em',
-              wordBreak: 'keep-all',
-            }}
-          >
-            Wedding Gown Cleaning & Preservation
-            <span className="block text-brand-lime mt-2">
-              Non-Toxic, Eco‑Friendly Care for Brides in Jacksonville
-            </span>
+      {/* Hero Section */}
+      <section className="max-w-6xl mx-auto">
+        <div ref={heroLeftRef} className="text-center mb-12">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-poppins font-extrabold leading-tight tracking-tight mb-4">
+            Wedding Gown Dry Cleaning Services
           </h1>
-          <p className="text-lg md:text-xl text-[#142C50]/80 font-medium mb-10 max-w-2xl">
-            Our eco-friendly wet cleaning system is safe for silk, lace, and satin — the ideal choice for Jacksonville brides who want wedding gown cleaning without harsh chemicals or toxic residue.
+          <p className="text-xl text-brand-lime font-semibold mb-6">
+            Preserve Your Precious Memories With Expert Care
+          </p>
+          <p className="text-lg text-[#142C50]/80 max-w-4xl mx-auto mb-8">
+            When you need professional dry cleaning services, you can trust A Greener Cleaner of Jacksonville, FL. 
+            We proudly serve St. Johns County, including Nocatee and Julington Creek Plantation. From couture wedding 
+            gowns to suede shirts, we clean all types of clothing and specialty fabrics with care and precision.
+          </p>
+          <p className="text-lg text-[#142C50]/80 max-w-4xl mx-auto">
+            We are the first and only wet cleaner in Jacksonville, offering a level of green garment care unmatched 
+            in the region. We never use harsh solvents, harmful to both your health and the environment. One of the 
+            best parts? We offer contactless pickup and delivery, with a reminder sent the evening before. When 
+            confirmed, we'll arrive the next day.
           </p>
         </div>
-        {/* Right: Before/After Images */}
-        <div ref={heroRightRef} className="flex-1 w-full md:max-w-xl flex flex-row gap-4">
+
+        {/* Before/After Images */}
+        <div ref={heroRightRef} className="w-full md:max-w-3xl mx-auto flex flex-row gap-4">
           <div className="flex-1 flex flex-col items-center">
             <span className="font-semibold text-lg mb-2">Before</span>
             <div className="border-2 border-[#142C50] rounded-xl overflow-hidden h-full">
@@ -94,72 +96,74 @@ const BridalGownComponent = () => {
         </div>
       </section>
 
-      {/* Section 1: Bridal & Gown Care */}
+      {/* Understanding Section */}
+      <section className="max-w-6xl mx-auto bg-brand-lime/10 rounded-2xl p-8 md:p-12" ref={el => cardRefs.current[0] = el as HTMLDivElement}>
+        <h2 className="text-2xl font-bold text-[#142C50] mb-6">At A Greener Cleaner, We Understand</h2>
+        <p className="text-lg text-[#142C50]/80 mb-4">
+          Your wedding gown isn't just a garment, it's a memory. Our wedding gown dry cleaning service is designed 
+          to keep your gown looking as stunning as the day you wore it. Whether for post-wedding cleaning or 
+          heirloom preservation, we handle every detail with expert care.
+        </p>
+      </section>
+
+      {/* Services Grid */}
       <section className="max-w-7xl mx-auto px-4">
         <div className="grid md:grid-cols-3 gap-8">
           {[
             {
-              icon: "💧",
-              title: "Wet Cleaning for Delicate Bridal Gowns",
+              icon: "💍",
+              title: "Specialized Treatment for Your Special Dress",
               content: (
                 <div className="space-y-4 text-[#142C50]/80 leading-relaxed">
-                  <p>Your wedding gown deserves the safest clean possible — without harsh chemicals. Our eco-friendly wet cleaning system uses purified water and biodegradable detergents.</p>
-                  <p>This gentle process is safe for even the most delicate fabrics:</p>
-                  <ul className="list-disc pl-5 space-y-2">
-                    <li>Silk and lace</li>
-                    <li>Tulle and beadwork</li>
-                    <li>Delicate embellishments</li>
-                  </ul>
-                  <p>Unlike traditional dry cleaning with toxic solvents like PERC, wet cleaning leaves no chemical residue or yellowing behind — just a beautifully restored gown, ready to be worn or preserved.</p>
+                  <p>Every gown is unique, and our process reflects that. Recognized as one of Jacksonville's most trusted wedding gown dry cleaners, our team uses advanced, eco-friendly techniques to treat delicate fabrics like silk, satin, lace, and tulle.</p>
+                  <p>We clean and preserve every element, from intricate embroidery to delicate beading, with precision and respect.</p>
                 </div>
               )
             },
             {
-              icon: "💍",
-              title: "Before & After Wedding Dress Service",
+              icon: "🧼",
+              title: "Comprehensive Cleaning Process",
               content: (
                 <div className="space-y-4 text-[#142C50]/80 leading-relaxed">
-                  <p>Whether you want your dress picture-perfect before the big day or expertly restored afterward, we've got you covered.</p>
-                  <p>Our bridal specialists offer:</p>
-                  <ul className="list-disc pl-5 space-y-2">
-                    <li>Pre-ceremony freshening for transport-wrinkled dresses</li>
-                    <li>Deep post-wedding cleanups for stains and spills</li>
-                    <li>Individual evaluation and treatment plans</li>
-                  </ul>
-                  <p>Every gown is treated with the care it deserves, ensuring it looks flawless in both memories and photos.</p>
+                  <p>Our process starts with a detailed inspection to identify stains, spots, or areas requiring special attention.</p>
+                  <p>Based on fabric type and embellishments, we customize the cleaning method to ensure safe, effective results — never compromising the integrity of the gown.</p>
                 </div>
               )
             },
             {
               icon: "📦",
-              title: "Wedding Gown Preservation Box",
+              title: "Long-Term Preservation Services",
               content: (
                 <div className="space-y-4 text-[#142C50]/80 leading-relaxed">
-                  <p>Preserving your dress means protecting more than just fabric — it's preserving a once-in-a-lifetime moment.</p>
-                  <p>Our preservation process includes:</p>
-                  <ul className="list-disc pl-5 space-y-2">
-                    <li>Archival-safe preservation boxes</li>
-                    <li>Acid-free tissue padding</li>
-                    <li>Breathable seal protection</li>
-                  </ul>
-                  <p>Whether you plan to pass it down or simply want to keep it perfect, our preservation method keeps your gown protected for decades to come.</p>
+                  <p>After cleaning, we offer preservation designed to last for generations. Your gown is packaged in acid-free materials and stored in archival-quality containers to prevent yellowing, fading, or deterioration over time.</p>
+                  <p>Whether passing it down or preserving it as a keepsake, your gown will remain beautifully protected.</p>
                 </div>
               )
             }
           ].map((card, idx) => (
             <div
               key={idx}
-              ref={el => cardRefs.current[idx] = el}
+              ref={el => cardRefs.current[idx + 1] = el}
               className="bg-white p-8 shadow-lg rounded-2xl text-left"
               style={{ transitionDelay: `${idx * 200}ms` }}
             >
               <h3 className="font-semibold text-2xl mb-4 text-[#142C50]">
-                <span className="text-brand-lime">{card.icon}</span> {card.title}
+                <span className="text-brand-lime text-3xl mr-2">{card.icon}</span> {card.title}
               </h3>
               {card.content}
             </div>
           ))}
         </div>
+      </section>
+
+      {/* Why Trust Section */}
+      <section className="max-w-6xl mx-auto bg-gray-50 rounded-2xl p-8 md:p-12" ref={el => cardRefs.current[4] = el as HTMLDivElement}>
+        <h2 className="text-2xl font-bold text-[#142C50] mb-6">Why Trust A Greener Cleaner?</h2>
+        <p className="text-lg text-[#142C50]/80">
+          Your wedding dress holds priceless memories, and it deserves expert care. At A Greener Cleaner, we offer 
+          meticulous attention to detail, unmatched fabric safety, and personalized service. We treat your gown as 
+          if it were our own.
+        </p>
       </section>
 
       {/* Section 2: Testimonial */}
@@ -170,7 +174,7 @@ const BridalGownComponent = () => {
         <p className="text-center mt-4 font-semibold">— Emily P., St. John's County Bride</p>
       </section>
 
-      {/* Section 3: FAQ */}
+      {/* FAQ */}
       <section className="max-w-4xl mx-auto">
         <h2 className="text-2xl font-poppins font-bold text-center mb-8">Bridal Gown FAQ</h2>
         <div className="space-y-4">
@@ -210,21 +214,24 @@ const BridalGownComponent = () => {
         </div>
       </section>
 
-      {/* Section 4: CTA + Form Link */}
+      {/* CTA Section */}
       <section ref={ctaRef} className="text-center space-y-6 max-w-2xl mx-auto">
         <h3 className="text-2xl font-poppins font-bold">
-          Ready to Preserve Your Gown?
+          Contact Us Today
         </h3>
         <p className="text-lg">
-          Fill out our quick form and upload photos of your dress for a personalized quote from the owner.
+          Schedule your wedding gown dry cleaning service by calling (904) 370-1007 or (904) 34-GREEN. 
+          Let us help you preserve your memories with care you can trust.
         </p>
         <div className="flex justify-center gap-4 flex-wrap">
-          <Link to="/bridal-intake" className="bg-[#A5D834] text-white px-6 py-3 rounded-full font-poppins shadow-md">
-            Upload Dress Photos & Request Quote
+          <Link to="/schedule-pickup" className="bg-brand-lime hover:bg-brand-green text-white px-6 py-3 rounded-full font-poppins shadow-md inline-flex items-center">
+            <Calendar className="mr-2 h-5 w-5" />
+            Schedule Pickup
           </Link>
-          <Link to="/chat" className="border border-[#142C50] text-[#142C50] px-6 py-3 rounded-full font-poppins">
-            Talk to Our Bridal Bot
-          </Link>
+          <a href="tel:9043701007" className="border border-[#142C50] text-[#142C50] px-6 py-3 rounded-full font-poppins inline-flex items-center hover:bg-gray-50">
+            <Phone className="mr-2 h-5 w-5" />
+            Call (904) 370-1007
+          </a>
         </div>
       </section>
     </div>
