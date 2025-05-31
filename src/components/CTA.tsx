@@ -45,7 +45,7 @@ const CTA: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-4">
             <Link 
-              to="/schedule-pickup" 
+              to="/dry-cleaning-delivery-services" 
               className="bg-white hover:bg-gray-100 text-brand-navy font-medium py-3 px-8 rounded-full transition-colors shadow-lg inline-flex items-center"
             >
               <Calendar className="mr-2 h-5 w-5" />

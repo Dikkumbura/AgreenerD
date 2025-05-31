@@ -149,7 +149,7 @@ const DeliveryAreas: React.FC = () => {
               phone number, and message — and we'll take care of the rest.
             </p>
             <Link 
-              to="/schedule-pickup" 
+              to="/dry-cleaning-delivery-services" 
               className="inline-block bg-brand-lime hover:bg-brand-green text-white font-medium px-8 py-3 rounded-full transition-colors"
             >
               Schedule Your Pickup

@@ -257,7 +257,7 @@ const BridalGownComponent = () => {
             Let us help you preserve your memories with care you can trust.
           </p>
           <div className="flex justify-center gap-4 flex-wrap">
-            <Link to="/schedule-pickup" className="bg-brand-lime hover:bg-brand-green text-white px-6 py-3 rounded-full font-poppins shadow-md inline-flex items-center">
+            <Link to="/dry-cleaning-delivery-services" className="bg-brand-lime hover:bg-brand-green text-white px-6 py-3 rounded-full font-poppins shadow-md inline-flex items-center">
               <Calendar className="mr-2 h-5 w-5" />
               Schedule Pickup
             </Link>

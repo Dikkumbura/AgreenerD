@@ -100,7 +100,7 @@ const ContactUs: React.FC = () => {
                   the night before. When you confirm, we'll arrive the next day — no hassle.
                 </p>
                 <Link 
-                  to="/schedule-pickup" 
+                  to="/dry-cleaning-delivery-services" 
                   className="inline-block bg-brand-lime hover:bg-brand-green text-white font-medium px-6 py-3 rounded-full transition-colors"
                 >
                   Schedule Pickup
